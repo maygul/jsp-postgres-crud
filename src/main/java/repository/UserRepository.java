@@ -12,7 +12,7 @@ public class UserRepository {
 
     private static final Logger log = Logger.getLogger(UserRepository.class.getName());
 
-    private static final String jdbcURL = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String jdbcURL = "jdbc:postgresql://localhost:5555/postgres";
     private static final String jdbcUsername = "postgres";
     private static final String jdbcPassword = "postgres";
 
