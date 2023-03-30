@@ -51,4 +51,18 @@ public class UserController {
         modelAndView.addObject("user", user);
         return modelAndView;
     }
+
+    @PostMapping("/update")
+    public ModelAndView updateUser(HttpServletRequest request) {
+        userService.updateUser(request);
+        return listUsers();
+    }
+
+    @GetMapping("/delete")
+    public ModelAndView deleteUser(@RequestParam(value = "id", required = true) Long id) {
+        userService.deleteUser(id);
+        return listUsers();
+    }
+
+
 }

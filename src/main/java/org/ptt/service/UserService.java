@@ -38,4 +38,31 @@ public class UserService {
     public User getUser(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found-id: " + id));
     }
+
+    public void updateUser(HttpServletRequest request) {
+        Long id = Long.parseLong(request.getParameter("id"));
+
+        User user = getUser(id);
+
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String country = request.getParameter("country");
+
+        if (name != null) {
+            user.setName(name);
+        }
+
+        if (email != null && !email.isBlank()) {
+            user.setEmail(email);
+        }
+
+        if (country != null && !country.isBlank()) {
+            user.setCountry(country);
+        }
+        userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }
