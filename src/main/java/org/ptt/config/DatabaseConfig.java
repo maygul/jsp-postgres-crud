@@ -49,7 +49,7 @@ public class DatabaseConfig {
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(basicDataSource());
-        em.setPackagesToScan("org.ptt.spring.persistence.entity");
+        em.setPackagesToScan("org.ptt.persistence.entity");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(hibernateProperties());
         return em;

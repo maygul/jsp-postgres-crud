@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.annotation.PostConstruct;
 
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "org.ptt.persistence.repository")
 @EnableTransactionManagement
 @EnableWebMvc
 @Configuration
