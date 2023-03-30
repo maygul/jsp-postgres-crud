@@ -4,9 +4,12 @@ import org.ptt.persistence.entity.User;
 import org.ptt.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -32,6 +35,20 @@ public class UserController {
     @GetMapping("/new")
     public ModelAndView newUser() {
         ModelAndView modelAndView = new ModelAndView("user/user-form");
+        return modelAndView;
+    }
+
+    @PostMapping("/insert")
+    public ModelAndView insertUser(HttpServletRequest request) {
+        userService.saveUser(request);
+        return listUsers();
+    }
+
+    @GetMapping("/edit")
+    public ModelAndView editUser(@RequestParam(value = "id", required = true) Long id) {
+        User user = userService.getUser(id);
+        ModelAndView modelAndView = new ModelAndView("user/user-form");
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 }
